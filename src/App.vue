@@ -7,7 +7,10 @@ const isReadMoreOpen = ref(false);
 
 const mobileMenuHandle = () => {
   isMenuOpen.value = !isMenuOpen.value;
-  console.log(isMenuOpen.value);
+};
+
+const ReadMoreHandle = () => {
+  isReadMoreOpen.value = !isMenuOpen.value;
 };
 
 watch(isMenuOpen, (newVal) => {
@@ -105,11 +108,24 @@ watch(isMenuOpen, (newVal) => {
             <h3>Sobre</h3>
           </div>
           <div class="content-body" >
-            <button>
+            <button v-if="!isReadMoreOpen" @click="ReadMoreHandle()">
               <p>
                 Leia mais
               </p>
             </button>
+            <div class="message" v-else >
+              <h3>Embarcadores,<p>nós fazemos frete!</p></h3>
+              <span>Através da nossa Plataforma Web, garantimos serviço com todos os requisitos e obrigações da transportadora tradicional.</span>
+              <p class="about-text" >
+                Conectamos vocês Embarcadores aos mais qualificados transportadores autônomos,
+                através de um criterioso processo de gestão e simplificação de processos do frete!
+                Com a TruckMe, você otimiza seus custos de transporte.
+                Nossa solução digital permite a melhor combinação de rotas e cargas,
+                resultando em menor tempo de entrega e redução de despesas operacionais. 
+                Descubra como a TruckMe pode transformar a logística do seu negócio.
+                Junte-se à primeira transportadora 100% digital e leve suas operações de frete para o próximo nível.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -153,6 +169,10 @@ watch(isMenuOpen, (newVal) => {
 ul {
   list-style: none;
   transition: all 0.5s ease-in-out !important;
+}
+
+.hover-brightness {
+  min-width: 150px;
 }
 
 .hover-brightness:hover {
@@ -212,10 +232,13 @@ header {
           width: 300%;
           height: 4rem;
           object-fit: cover;
-          margin-right: 8px;
 
-          @media(max-width: 825px) {
+          @media(max-width: 920px) {
             height: 3rem;
+          }
+
+          @media(max-width: 801px) {
+            height: 2.5rem;
           }
 
         }
@@ -369,6 +392,8 @@ main {
 
         .text-card {
 
+          padding:.2rem;
+
           .txt {
             h4 {
               text-align: center;
@@ -462,15 +487,12 @@ main {
     width: 100%;
 
     .container {
-      max-width: 1444px;
       margin: 0 auto;
       width: 100%;
-      padding: 1rem 1rem;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       height: 600px;
       
-      background: $gray-dark-color;
       filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
 
       .content {
@@ -507,6 +529,40 @@ main {
           align-items: center;
           width: 100%;
           height: 100%;
+
+          .message {
+
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            gap: .5rem;
+
+            h3 {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              align-items: center;
+              gap: .5rem;
+              font-size: 2.5rem;
+
+              p {
+                color: $primary-color;
+                font-weight: 600;
+              }
+            }
+            span {
+              color: $gray-dark-color;
+              font-weight: bolder;
+              font-size: 1.2rem;
+            }
+            .about-text {
+              color: $black-color;
+              font-weight: 500;
+              background-color: $gray-medium-color;
+              border-radius: 10px;
+              padding: 1rem;
+            }
+          }
         }
       }
     }
@@ -516,19 +572,14 @@ main {
     width: 100%;
 
     .container {
-      max-width: 1444px;
+      // max-width: 1444px;
       margin: 0 auto;
       width: 100%;
-      padding: 1rem 1rem;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       height: 600px;
       
-      background: $gray-dark-color;
       filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
-
-      display: flex;
-      flex-direction: column;
 
       .content {
         height: 100%;
@@ -569,19 +620,14 @@ main {
     width: 100%;
 
     .container {
-      max-width: 1444px;
+      // max-width: 1444px;
       margin: 0 auto;
       width: 100%;
-      padding: 1rem 1rem;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       height: 600px;
       
-      background: $gray-dark-color;
       filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
-
-      display: flex;
-      flex-direction: column;
 
       .content {
         height: 100%;
