@@ -496,6 +496,9 @@ main {
       filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
 
       .content {
+
+        display: flex;
+        flex-direction: column;
         height: 100%;
         width: 100%;
         
@@ -582,6 +585,8 @@ main {
       filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
 
       .content {
+        display: flex;
+        flex-direction: column;
         height: 100%;
         width: 100%;
         
@@ -630,6 +635,8 @@ main {
       filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
 
       .content {
+        display: flex;
+        flex-direction: column;
         height: 100%;
         width: 100%;
         
