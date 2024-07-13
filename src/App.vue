@@ -20,20 +20,48 @@ const mobileMenuHandle = () => {
         </div>
         <ul :class="{'menu-open': isMenuOpen}">
           <div class="btn">
-            <i class="close-btn" @click="mobileMenuHandle()" >
-              <span class="material-symbols-outlined">
+            <i class="close-btn">
+              <span @click="mobileMenuHandle()" class="material-symbols-outlined">
                 close
               </span>
             </i>
           </div>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Sobre</a></li>
-          <li><a href="#">Serviços</a></li>
-          <li><a href="#">Contato</a></li>
+          <div class="hover-brightness" style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-left: -1rem;" >
+            <i v-if="isMenuOpen" class="close-btn">
+              <span class="material-symbols-outlined">
+                home
+              </span>
+            </i>
+            <li><a href="#">Home</a></li>
+          </div>
+          <div class="hover-brightness" style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-left: -1rem;" >
+            <i v-if="isMenuOpen" class="close-btn" >
+              <span class="material-symbols-outlined">
+                info
+              </span>
+            </i>
+            <li><a href="#">Sobre</a></li>
+          </div>
+          <div class="hover-brightness" style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-left: 1rem;" >
+            <i v-if="isMenuOpen" class="close-btn">
+              <span class="material-symbols-outlined">
+                work
+              </span>
+            </i>
+            <li><a href="#">Serviços</a></li>
+          </div>
+          <div class="hover-brightness" style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-left: 1rem;" >
+            <i v-if="isMenuOpen" class="close-btn">
+              <span class="material-symbols-outlined">
+                call
+              </span>
+            </i>
+            <li><a href="#">Contato</a></li>
+          </div>
         </ul>
-        <div v-show="!isMenuOpen" class="btn" @click="mobileMenuHandle()">
+        <div v-show="!isMenuOpen" class="btn">
           <i class="menu-btn">
-            <span class="material-symbols-outlined">
+            <span @click="mobileMenuHandle()" class="material-symbols-outlined">
               menu
             </span>
           </i>
@@ -51,10 +79,10 @@ const mobileMenuHandle = () => {
               <h2>Essa é a nossa missão!</h2>
             </div>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Praesentium, est repellat.
-              Id laboriosam magni ipsum, voluptas error, commodi amet,
-              dolore quia modi velit eius reiciendis blanditiis minus illo voluptatem obcaecati?
+              Na vanguarda da revolução logística,
+              a TruckMe se destaca como a primeira transportadora 100% digital do mercado.
+              Nosso compromisso é oferecer uma solução inteligente em fretes,
+              combinando tecnologia de ponta com um serviço personalizado e eficiente.
             </p>
           </div>
         </div>
@@ -65,32 +93,41 @@ const mobileMenuHandle = () => {
 
 <style lang="scss" >
 
+@import "./style.scss";
+
 ul {
   list-style: none;
-  transition: all 0.5s ease-in-out; /* Transição suave para todas as propriedades */
+  transition: all 0.5s ease-in-out !important;
+}
+
+.hover-brightness:hover {
+  @media(max-width: 768px) {
+    background-color: $primary-color;
+  }
 }
 
 .menu-open {
+  margin-top: -3.8rem!important;
+  top: 0 !important ;
   left: 0 !important;
   display: flex !important;
-  transition: all 0.5s ease-in; /* Transição suave para todas as propriedades */
-}
-
-@media (max-width: 768px) {
-  ul {
-    left: -100%;
-    display: none;
-    transition: all 0.5s ease-in-out; /* Transição suave para todas as propriedades */
-  }
-
-  .menu-open {
-    left: 0;
+  transition: all 0.5s ease-in !important;
+  height: 100%;
+  
+  li {
     display: flex;
-    transition: all 0.5s ease-in; /* Transição suave para todas as propriedades */
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .btn {
+    i {
+      .material-symbols-outlined {
+        margin-right: 1.2rem;
+      }
+    }
   }
 }
-
-@import "./style.scss";
 
 header {
   background-color: $white-color;
@@ -122,6 +159,11 @@ header {
           height: 4rem;
           object-fit: cover;
           margin-right: 8px;
+
+          @media(max-width: 825px) {
+            height: 3rem;
+          }
+
         }
       }
 
@@ -141,7 +183,7 @@ header {
           width: 100%;
           height: 100vh;
           background: $gray-medium-color;
-          top: 80px;
+          top: 0;
           left: -100%;
           padding: 5rem 0;
           z-index: 9999;
@@ -198,6 +240,7 @@ header {
         color: $black-color;
         cursor: pointer;
         display: none;
+        text-align: right;
 
         @media(max-width: 768px) {
           display: block;
@@ -224,8 +267,10 @@ main {
   justify-content: center;
   min-height: 80vh;
   background-color: $white-color;
+  padding: 1.5rem;
 
   .home {
+    width: 100%;
 
     .container {
       max-width: 1444px;
@@ -245,6 +290,10 @@ main {
       justify-content: flex-end;
       align-items: flex-end;
 
+      @media(max-width: 425px) {
+        height: 400px;
+      }
+
       .content {
         display: flex;
         justify-content: center;
@@ -259,6 +308,7 @@ main {
 
         @media(max-width: 840px) {
           text-align: center;
+          width: 100%;
         }
 
         .text-card {
@@ -267,13 +317,64 @@ main {
             h4 {
               text-align: center;
               font-size: 2rem;
+
+              @media(max-width: 1100px) {
+                font-size: 1.5rem;
+              }
+
+              @media(max-width: 900px) {
+                font-size: 1.5rem;
+              }
+
+              @media(max-width: 800px) {
+                font-size: 1.3rem;
+              }
+
+              @media(max-width: 730px) {
+                font-size: 1rem;
+              }
+
+              @media(max-width: 425px) {
+                font-size: .7rem;
+              }
+
+              @media(max-width: 320px) {
+                font-size: .7rem;
+              }
+
             }
 
             h2 {
-              font-size: 4.1rem;
+              font-size: 4rem;
+              color: $primary-color;
+              text-align: center;
 
-              @media(max-width: 728px) {
+              @media(max-width: 1450px) {
+                font-size: 3.5rem;
+              }
+
+              @media(max-width: 1300px) {
+                font-size: 3rem;
+              }
+
+              @media(max-width: 1115px) {
+                font-size: 2.5rem;
+              }
+
+              @media(max-width: 1064px) {
+                font-size: 2.5rem;
+              }
+
+              @media(max-width: 950px) {
                 font-size: 2rem;
+              }
+
+              @media(max-width: 730px) {
+                font-size: 1.5rem;
+              }
+
+              @media(max-width: 425px) {
+                font-size: 1rem;
               }
             }
           }
@@ -281,15 +382,19 @@ main {
           p {
             font-size: 1rem;
             line-height: 1.4;
-            margin: 1rem 0.5rem;
+            padding: 1rem 0.5rem;
             text-align: justify;
 
-            @media(max-width: 840px) {
-                width: 100%;
+            @media(max-width: 425px) {
+              font-size: 0.9rem;
             }
 
             @media(max-width: 728px) {
               font-size: 0.9rem;
+            }
+
+            @media(max-width: 768px) {
+              display: none;
             }
           }
         }
