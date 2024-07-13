@@ -1,13 +1,22 @@
 <script setup lang="ts">
 
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const isMenuOpen = ref(false);
+const isReadMoreOpen = ref(false);
 
 const mobileMenuHandle = () => {
   isMenuOpen.value = !isMenuOpen.value;
   console.log(isMenuOpen.value);
 };
+
+watch(isMenuOpen, (newVal) => {
+  if (newVal) {
+    document.body.classList.add('no-scroll');
+  } else {
+    document.body.classList.remove('no-scroll');
+  }
+});
 
 </script>
 
@@ -88,12 +97,58 @@ const mobileMenuHandle = () => {
         </div>
       </div>
     </section>
+
+    <section class="about" ref="about" >
+      <div class="container">
+        <div class="content" >
+          <div class="content-header" >
+            <h3>Sobre</h3>
+          </div>
+          <div class="content-body" >
+            <button>
+              <p>
+                Leia mais
+              </p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" ref="services" >
+      <div class="container">
+        <div class="content" >
+          <div class="content-header" >
+            <h3>Serviços</h3>
+          </div>
+          <div class="content-body" >
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="contact" ref="contact" >
+      <div class="container">
+        <div class="content" >
+          <div class="content-header" >
+            <h3>Contato</h3>
+          </div>
+          <div class="content-body" >
+            
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
 <style lang="scss" >
 
 @import "./style.scss";
+
+.no-scroll {
+  overflow: hidden;
+}
 
 ul {
   list-style: none;
@@ -112,7 +167,6 @@ ul {
   left: 0 !important;
   display: flex !important;
   transition: all 0.5s ease-in !important;
-  height: 100%;
   
   li {
     display: flex;
@@ -181,7 +235,7 @@ header {
           flex-direction: column;
           position: absolute;
           width: 100%;
-          height: 100vh;
+          height: 100%;
           background: $gray-medium-color;
           top: 0;
           left: -100%;
@@ -217,7 +271,7 @@ header {
 
             &:hover {
               color: $gray-dark-color;
-              filter: brightness(0.9);
+              filter: brightness(0.9) blur(.5px);
             }
 
             @media(max-width: 768px) {
@@ -265,6 +319,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 4rem;
   min-height: 80vh;
   background-color: $white-color;
   padding: 1.5rem;
@@ -401,14 +457,182 @@ main {
       }
     }
   }
+
+  .about {
+    width: 100%;
+
+    .container {
+      max-width: 1444px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 1rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      height: 600px;
+      
+      background: $gray-dark-color;
+      filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
+
+      .content {
+        height: 100%;
+        width: 100%;
+        
+        border-radius: 10px;
+        background-color: $gray-light-color;
+        filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
+
+        .content-header {
+
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          background: $gray-medium-color;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          padding: 8px;
+          filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
+
+          h3 {
+            font-size: 2rem;
+            color: $black-color;
+            text-align: center;
+          }
+        }
+
+        .content-body {
+          padding: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .services {
+    width: 100%;
+
+    .container {
+      max-width: 1444px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 1rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      height: 600px;
+      
+      background: $gray-dark-color;
+      filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
+
+      display: flex;
+      flex-direction: column;
+
+      .content {
+        height: 100%;
+        width: 100%;
+        
+        border-radius: 10px;
+        background-color: $gray-light-color;
+        filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
+
+        .content-header {
+
+          width: 100%;
+          // height: 2rem;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          background: $gray-medium-color;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          padding: 8px;
+          filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
+
+          h3 {
+            font-size: 2rem;
+            color: $black-color;
+            text-align: center;
+          }
+        }
+
+        .content-body {
+          padding: 4px;
+        }
+      }
+    }
+  }
+
+  .contact {
+    width: 100%;
+
+    .container {
+      max-width: 1444px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 1rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      height: 600px;
+      
+      background: $gray-dark-color;
+      filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
+
+      display: flex;
+      flex-direction: column;
+
+      .content {
+        height: 100%;
+        width: 100%;
+        
+        border-radius: 10px;
+        background-color: $gray-light-color;
+        filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
+
+        .content-header {
+
+          width: 100%;
+          // height: 2rem;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          background: $gray-medium-color;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          padding: 8px;
+          filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.3));
+
+          h3 {
+            font-size: 2rem;
+            color: $black-color;
+            text-align: center;
+          }
+        }
+
+        .content-body {
+          padding: 4px;
+        }
+      }
+    }
+  }
 }
 
-.button {
+button {
   background-color: $primary-color;
-  color: $black-color;
+  color: $white-color;
+  border-radius: 50px 50px 50px 50px;
+  font-size: 18px;
+  padding: 20px 40px;
+  cursor: pointer;
+  border: 4px solid $gray-medium-color;
 
   &:hover {
-      background-color: $gray-dark-color;
+    background-color: $gray-dark-color;
+    p {
+      filter: blur(.5px);
+    }
   }
 }
 
