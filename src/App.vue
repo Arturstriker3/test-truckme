@@ -142,12 +142,20 @@ watch(isMenuOpen, (newVal) => {
           <div class="content-header" >
             <h3>Serviços</h3>
           </div>
-          <div class="content-body" >
-            
+          <div class="content-body">
+            <div class="grid-item">Item 1</div>
+            <div class="grid-item">Item 2</div>
+            <div class="grid-item">Item 3</div>
+            <div class="grid-item">Item 4</div>
+            <div class="grid-item">Item 5</div>
+            <div class="grid-item">Item 6</div>
+            <div class="grid-item">Item 7</div>
+            <div class="grid-item">Item 8</div>
           </div>
         </div>
       </div>
     </section>
+
     <section class="contact" ref="contact" >
       <div class="container">
         <div class="content" >
@@ -692,6 +700,18 @@ main {
 
         .content-body {
           padding: 4px;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(2, auto);
+          gap: 10px;
+          height: 100%;
+
+          .grid-item {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+          }
         }
       }
     }
