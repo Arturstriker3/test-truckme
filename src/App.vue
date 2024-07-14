@@ -113,18 +113,23 @@ watch(isMenuOpen, (newVal) => {
                 Leia mais
               </p>
             </button>
-            <div class="message" v-else >
-              <h3>Embarcadores,<p>nós fazemos frete!</p></h3>
-              <span>Através da nossa Plataforma Web, garantimos serviço com todos os requisitos e obrigações da transportadora tradicional.</span>
-              <p class="about-text" >
+            <div class="about-text" v-else>
+              <div class="message-header" >
+                <div style="display: flex; justify-content: center; align-items: center; flex-direction: row; gap: .4rem;" >
+                  <h3>Embarcadores,</h3>
+                  <p>nós fazemos frete!</p>
+                </div>
+                <span>Através da nossa Plataforma Web, garantimos serviço com todos os requisitos e obrigações da transportadora tradicional.</span>
+              </div>
+              <div class="message-text" >
                 Conectamos vocês Embarcadores aos mais qualificados transportadores autônomos,
                 através de um criterioso processo de gestão e simplificação de processos do frete!
                 Com a TruckMe, você otimiza seus custos de transporte.
                 Nossa solução digital permite a melhor combinação de rotas e cargas,
-                resultando em menor tempo de entrega e redução de despesas operacionais. 
+                resultando em menor tempo de entrega e redução de despesas operacionais.
                 Descubra como a TruckMe pode transformar a logística do seu negócio.
                 Junte-se à primeira transportadora 100% digital e leve suas operações de frete para o próximo nível.
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -533,37 +538,108 @@ main {
           width: 100%;
           height: 100%;
 
-          .message {
-
+          .about-text {
+            height: 100%;
+            width: 100%;
             display: flex;
+            justify-content: center;
+            align-items: center;
             flex-direction: column;
-            width: 50%;
-            gap: .5rem;
+            padding: 4rem;
 
-            h3 {
+            @media(max-width: 425px) {
+              padding: 0 1rem;
+            }
+
+            .message-header {
+
               display: flex;
-              flex-direction: row;
-              justify-content: flex-start;
-              align-items: center;
-              gap: .5rem;
-              font-size: 2.5rem;
+              justify-content: left;
+              align-items: flex-start;
+              flex-direction: column;
+              width: 100%;
+
+              h3 {
+                font-size: 2.5rem;
+
+                @media(max-width: 768px) {
+                  font-size: 2rem;
+                }
+
+                @media(max-width: 685px) {
+                  font-size: 2rem;
+                }
+
+                @media(max-width: 425px) {
+                  font-size: 1.1rem;
+                }
+
+                @media(max-width: 320px) {
+                  font-size: 0.7rem;
+                }
+
+                
+              }
 
               p {
                 color: $primary-color;
                 font-weight: 600;
+                font-size: 2.5rem;
+
+                @media(max-width: 768px) {
+                  font-size: 2.2rem;
+                }
+
+                @media(max-width: 685px) {
+                  font-size: 1.9rem;
+                }
+
+                @media(max-width: 634px) {
+                  font-size: 1.6rem;
+                }
+
+                @media(max-width: 621px) {
+                  font-size: 1.5rem;
+                }
+
+                @media(max-width: 425px) {
+                  font-size: 1.2rem;
+                }
+
+                @media(max-width: 372px) {
+                  font-size: 0.82rem;
+                }
+              }
+
+              span {
+                color: $gray-dark-color;
+                font-weight: bolder;
+                font-size: 1.2rem;
+
+                @media(max-width: 425px) {
+                  font-size: 1rem;
+                }
+                @media(max-width: 372px) {
+                  font-size: 0.9rem;
+                }
               }
             }
-            span {
-              color: $gray-dark-color;
-              font-weight: bolder;
-              font-size: 1.2rem;
-            }
-            .about-text {
-              color: $black-color;
+
+            .message-text {
+              display: flex;
+              justify-content: center;
+              align-items: center;
               font-weight: 500;
-              background-color: $gray-medium-color;
-              border-radius: 10px;
-              padding: 1rem;
+              font-size: 1.2rem;
+              padding: .8rem 0;
+              width: 100%;
+
+              // background-color: $gray-medium-color;
+              // border-radius: 8px;
+
+              @media(max-width: 768px) {
+                display: none;
+              }
             }
           }
         }
